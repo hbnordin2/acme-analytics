@@ -1,0 +1,18 @@
+name = "acme-analytics-api"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+account_id = "c9e9e5bb9f83dcb1af3640944f9881e0"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "acme-analytics-db"
+database_id = "46b8749a-c376-42fc-8d7e-fc53f42db4d0"
+
+[durable_objects]
+bindings = [
+  { name = "WEBSOCKET", class_name = "WebSocketDO" }
+]
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["WebSocketDO"]

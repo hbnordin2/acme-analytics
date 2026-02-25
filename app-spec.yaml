@@ -1,0 +1,71 @@
+name: "acme-analytics"
+product_name: "Acme Analytics"
+product_description: "Product analytics platform for SaaS companies. Track events, analyze funnels, understand user behavior."
+
+stack:
+  framework: Next.js 14+ (App Router)
+  rendering: SSR + RSC
+  language: TypeScript (strict)
+  css: Tailwind CSS v4
+  ui_library: shadcn/ui (custom build)
+  state: Zustand (client) + TanStack Query (server)
+  data_fetching: TanStack Query → REST API + one GraphQL query
+  auth: Clerk (middleware pattern)
+  forms: React Hook Form + Zod
+  router: App Router (file-based)
+  realtime: WebSocket (live visitor count)
+
+axes_covered:
+  rendering_strategy: SSR + RSC
+  css_approach: utility_classes
+  framework: next_app_router
+  auth_pattern: middleware_redirect
+  build_tool: turbopack
+  data_fetching: tanstack_query
+  auth_provider: clerk
+  state_management: zustand
+  component_library: shadcn
+  typescript: strict
+  api_protocol: rest + graphql
+  third_party_widgets: intercom_style + cookie_consent
+  portal_modals: react_portal
+  realtime: websocket
+  env_variables: next_public
+  package_manager: npm
+  image_handling: next_image
+  deploy_target: docker
+
+pages:
+  - path: /
+    description: "Marketing landing — hero, features grid, pricing table, testimonials, CTA"
+  - path: /sign-in
+    description: "Clerk sign-in page"
+  - path: /sign-up
+    description: "Clerk sign-up page"
+  - path: /dashboard
+    description: "Main dashboard — 4 KPI cards, area chart, bar chart, events table, live visitors"
+  - path: /dashboard/events
+    description: "Events explorer with filters, search, and paginated table"
+  - path: /dashboard/funnels
+    description: "Funnel analysis with step-by-step conversion visualization"
+  - path: /dashboard/users
+    description: "User list with search, role/plan badges, pagination"
+  - path: /dashboard/users/[id]
+    description: "User detail with activity timeline, assigned tasks, profile info"
+  - path: /dashboard/alerts
+    description: "Alert rules management with create/toggle"
+  - path: /dashboard/reports
+    description: "Reports gallery with generation and download"
+  - path: /dashboard/settings
+    description: "Settings with 5 tabs: General, Team, Billing, API Keys, Notifications"
+  - path: /dashboard/files
+    description: "File manager with folder navigation, grid/list toggle, trash"
+
+component_count_target: 50
+page_count_target: 12
+
+feature_overlays:
+  - branch: feature/service-worker
+    axes_added: [service_worker]
+  - branch: feature/i18n
+    axes_added: [i18n]
