@@ -6,6 +6,8 @@ import { FunnelsPageClient } from "@/components/dashboard/funnels-page-client";
 // This page fetches funnel data via GraphQL (port 4011) instead of REST.
 // ---------------------------------------------------------------------------
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = { title: "Funnel Analysis" };
 
 export default async function FunnelsPage() {

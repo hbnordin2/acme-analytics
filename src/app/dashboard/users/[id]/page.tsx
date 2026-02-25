@@ -18,6 +18,8 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { UserDetailTabs } from "@/components/dashboard/user-detail-tabs";
 import type { Metadata } from "next";
 
+export const dynamic = 'force-dynamic';
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------

@@ -9,6 +9,8 @@ import { FilesPageClient } from "@/components/dashboard/files-page-client";
 // for rendering + subsequent client-side interactions.
 // ---------------------------------------------------------------------------
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = { title: "Files" };
 
 export default async function FilesPage({

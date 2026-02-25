@@ -9,6 +9,8 @@ import { EventsPageClient } from "@/components/dashboard/events-page-client";
 // component for rendering + subsequent client-side interactions.
 // ---------------------------------------------------------------------------
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = { title: "Events Explorer" };
 
 const PAGE_SIZE = 20;

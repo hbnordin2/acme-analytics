@@ -13,6 +13,8 @@ import { SettingsPageClient } from "@/components/dashboard/settings-page-client"
 // and billing data server-side for immediate hydration.
 // ---------------------------------------------------------------------------
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = { title: "Settings" };
 
 export default async function SettingsPage() {

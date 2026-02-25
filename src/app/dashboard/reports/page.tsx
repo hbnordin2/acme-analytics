@@ -5,6 +5,8 @@ import { ReportsPageClient } from "@/components/dashboard/reports-page-client";
 // Reports page (Server Component)
 // ---------------------------------------------------------------------------
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = { title: "Reports" };
 
 export default async function ReportsPage() {

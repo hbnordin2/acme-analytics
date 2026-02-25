@@ -9,6 +9,8 @@ import { UsersPageClient } from "@/components/dashboard/users-page-client";
 // component for rendering + subsequent client-side interactions.
 // ---------------------------------------------------------------------------
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = { title: "Users" };
 
 const PAGE_SIZE = 15;

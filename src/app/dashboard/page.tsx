@@ -28,6 +28,8 @@ import {
 // TODO: Support project-level filtering from the sidebar project selector
 // ---------------------------------------------------------------------------
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = { title: "Dashboard" };
 
 // ---------------------------------------------------------------------------
