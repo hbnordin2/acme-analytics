@@ -369,6 +369,7 @@ const resolvers = {
     },
 
     analyticsSummary: async (_: unknown, args: { days?: number }, ctx: GraphQLContext) => {
+      try {
       const days = args.days ?? 30;
       const result = await ctx.db.prepare(`
         WITH current_period AS (
@@ -385,7 +386,10 @@ const resolvers = {
         ),
         session_stats AS (
           SELECT COALESCE(CAST(AVG(duration_seconds) AS INTEGER), 0) AS avg_sd,
-            COALESCE(ROUND(CAST(SUM(CASE WHEN is_bounce THEN 1 ELSE 0 END) AS REAL) / MAX(NULLIF(COUNT(*), 0)) * 100, 1), 0) AS br
+            CASE WHEN COUNT(*) > 0
+              THEN ROUND(CAST(SUM(CASE WHEN is_bounce THEN 1 ELSE 0 END) AS REAL) / COUNT(*) * 100, 1)
+              ELSE 0
+            END AS br
           FROM sessions WHERE started_at >= datetime('now', ?)
         ),
         top_ref AS (
@@ -409,6 +413,7 @@ const resolvers = {
         )
         .first();
 
+      console.log("analyticsSummary result:", JSON.stringify(result));
       return result ?? {
         totalPageViews: 0,
         uniqueVisitors: 0,
@@ -418,6 +423,10 @@ const resolvers = {
         pageViewsTrend: 0,
         visitorsTrend: 0,
       };
+      } catch (err) {
+        console.error("analyticsSummary error:", err);
+        throw err;
+      }
     },
 
     timeseries: async (_: unknown, args: { days?: number; interval?: string }, ctx: GraphQLContext) => {

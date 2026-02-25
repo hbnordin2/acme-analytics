@@ -245,10 +245,10 @@ rest.get("/api/analytics/summary", async (c) => {
       session_stats AS (
         SELECT
           COALESCE(CAST(AVG(duration_seconds) AS INTEGER), 0) AS avg_session_duration,
-          COALESCE(
-            ROUND(CAST(SUM(CASE WHEN is_bounce THEN 1 ELSE 0 END) AS REAL) / MAX(NULLIF(COUNT(*), 0)) * 100, 1),
-            0
-          ) AS bounce_rate
+          CASE WHEN COUNT(*) > 0
+            THEN ROUND(CAST(SUM(CASE WHEN is_bounce THEN 1 ELSE 0 END) AS REAL) / COUNT(*) * 100, 1)
+            ELSE 0
+          END AS bounce_rate
         FROM sessions
         WHERE started_at >= datetime('now', ?)
       ),
